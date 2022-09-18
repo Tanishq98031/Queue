@@ -1,0 +1,115 @@
+package DSA_other;
+
+class QueueLL
+{
+    QueueNode front;
+    QueueNode rear;
+    QueueNode head;
+    QueueNode tail;
+    int size;
+    int sizeCount;
+
+    QueueLL(int size)
+    {
+        this.front = null;
+        this.rear = null;
+        this.head = null;
+        this.head = tail;
+        this.size = size;
+        this.sizeCount = 0;
+    }
+
+    public void enqueue(int d)
+    {
+        if(sizeCount == size)
+        {
+            System.out.println("Queue overflow");
+            return;
+        }
+
+        QueueNode node = new QueueNode(d);
+        if(head == null)
+        {
+            head = node;
+            tail = node;
+            rear = tail;
+            front = head;
+            sizeCount++;
+            return;
+        }
+
+        tail.next = node;
+        tail = node;
+        rear = tail;
+        sizeCount++;
+        return;
+    }
+
+    public void dequeue()
+    {
+        if(sizeCount == 0)
+        {
+            System.out.println("Queue is empty");
+            return;
+        }
+
+        front = head.next;
+        head = front;
+        sizeCount--;
+    }
+
+    public void traverse()
+    {
+        QueueNode temp = head;
+        while(temp != null)
+        {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+        System.out.println();
+    }
+
+    public boolean empty()
+    {
+        if(head == null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    class QueueNode
+    {
+        int data;
+        QueueNode next;
+
+        QueueNode(int data)
+        {
+            this.data = data;
+            this.next = null;
+        }
+
+    }
+}
+
+public class QueueUsingLinkedList {
+    
+    public static void main(String[] args) {
+        
+        QueueLL q = new QueueLL(5);
+        q.enqueue(1);
+        q.enqueue(2);
+        q.enqueue(3);
+        q.enqueue(4);
+        q.enqueue(5);
+        q.traverse();
+
+        q.dequeue();
+        q.dequeue();
+        q.dequeue();
+        q.traverse();
+    }
+}
