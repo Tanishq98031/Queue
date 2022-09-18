@@ -1,0 +1,143 @@
+on Geeks for Geeks:
+class MyQueue {
+
+    int front, rear;
+    int size = 100005;
+	int arr[] = new int[size];
+
+    MyQueue()
+	{
+		front=0;
+		rear=0;
+	}
+	
+	//Function to push an element x in a queue.
+	void push(int x)
+	{
+	    // Your code here
+	    if(rear == size-1)
+	    {
+	        return;
+	    }
+	    
+	    arr[rear] = x;
+	    rear++;
+	} 
+
+    //Function to pop an element from queue and return that element.
+	int pop()
+	{
+		// Your code here
+		if(front == rear)
+		{
+		    return - 1;
+		}
+		
+		int element = arr[front];
+		front++;
+		
+		if(front == rear)
+		{
+		    front = rear = 0;
+		}
+		
+		return element;
+	} 
+}
+
+on Visual Studio Code:
+package DSA_other;
+
+class Queue
+{
+    int front;
+    int rear;
+    int size;
+    int [] arr;
+
+    Queue(int size)
+    {
+        this.size = size;
+        this.front = 0;
+        this.rear = 0;
+        arr = new int[this.size];
+    }
+
+    public void enQueue(int data)
+    {
+        if(rear == size)
+        {
+            System.out.println("Queue overflow");
+            return; 
+        }
+
+        arr[rear] = data;
+        rear++;
+    }
+
+    public int deQueue()
+    {
+        if(front == rear)
+        {
+            System.out.println("Queue is empty");
+            return -1;
+        }
+
+        int x = arr[front];
+        front++;
+
+        if(front == rear)
+        {
+            front = 0;
+            rear = 0;
+        }
+
+        return x;
+    }
+
+    public boolean isEmpty()
+    {
+        if(front == rear)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void traverse()
+    {
+        if(front == rear)
+        {
+            System.out.println("Queue is empty");
+            return;
+        }
+
+        for(int i = front; i < rear; i++)
+        {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+}
+
+public class QueueUsingArray {
+    
+    public static void main(String[] args) {
+        
+        Queue q = new Queue(5);
+        q.enQueue(1);
+        q.enQueue(2);
+        q.enQueue(3);
+        q.enQueue(4);
+        q.enQueue(5);
+        q.traverse();
+
+        System.out.println("Dequeued element is " + q.deQueue());
+        System.out.println("Dequeued element is " + q.deQueue());
+        q.traverse();
+    }
+
+}
