@@ -1,0 +1,49 @@
+
+//  USING STACK:
+class GfG{
+    //Function to reverse the queue.
+    public Queue<Integer> rev(Queue<Integer> q){
+        Stack<Integer> st = new Stack<>();
+        while(!q.isEmpty())
+        {
+            int value = q.peek();
+            st.push(value);
+            q.remove();
+        }
+        
+        while(!st.empty())
+        {
+            int value = st.peek();
+            q.add(value);
+            st.pop();
+        }
+        return q;
+    }
+}
+
+
+//USING RECURSION:
+class GfG{
+    //Function to reverse the queue.
+    public Queue<Integer> rev(Queue<Integer> q){
+        
+        solve(q);
+        
+        return q;
+    }
+    
+    public void solve(Queue<Integer> q)
+    {
+        if(q.isEmpty())
+        {
+            return;
+        }
+        
+        int value = q.peek();
+        q.remove();
+        
+        solve(q);
+        
+        q.add(value);
+    }
+}
