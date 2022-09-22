@@ -1,0 +1,51 @@
+class Solution
+{
+    public String FirstNonRepeating(String A)
+    {
+        // code here
+        HashMap<Character, Integer> map = new HashMap<>();
+        Queue<Character> q = new LinkedList<>();
+        String ans = "";
+        
+        for(int i = 0; i < A.length(); i++)
+        {
+            char ch = A.charAt(i);
+            
+            if(!map.containsKey(ch))
+            {
+                map.put(ch, 1);
+            }
+            else
+            {
+                int j = map.get(ch);
+                map.put(ch, j+1);
+            }
+            
+            q.add(ch);
+            
+            while(!q.isEmpty())
+            {
+                char c = q.peek();
+                int k = map.get(c);
+                
+                if(k > 1)
+                {
+                    q.remove();
+                }
+                else
+                {
+                    ans += c;
+                    break;
+                }
+                
+            }
+            
+            if(q.isEmpty())
+            {
+                ans += '#';
+            }
+        }
+        
+        return ans;
+    }
+}
